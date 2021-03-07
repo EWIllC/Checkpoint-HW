@@ -1,25 +1,41 @@
 /* eslint-disable no-alert */
 
+
 /**************
  *   SLICE 1
  **************/
 
+
+let totalCoffee = parseInt(document.getElementById('coffee_counter').innerText);
+
+let button = document.getElementById('big_coffee');
+
+
+
 function updateCoffeeView(coffeeQty) {
-  // your code here
+  document.getElementById('coffee_counter').innerHTML = totalCoffee;
 }
 
 function clickCoffee(data) {
-  // your code here
+  totalCoffee++;
+
 }
+
+button.addEventListener('click', clickCoffee);
+button.addEventListener('click', updateCoffeeView);
 
 /**************
  *   SLICE 2
  **************/
 
-function unlockProducers(producers, coffeeCount) {
-  // your code here
+function unlockProducers(coffeeCount) {
+  for(let i = 0; i < window.data.producers.length; ++i){
+    if(window.data.producers[i].unlocked !== true && coffeeCount >= window.data.producers[i].cps){
+      window.data.producers[i].unlocked = true;
+    }
+  }
 }
-
+unlockProducers(totalCoffee);
 function getUnlockedProducers(data) {
   // your code here
 }
